@@ -1,4 +1,4 @@
-package handson2.realm.io.twitter;
+package io.realm.handson2.twitter;
 
 import android.app.Application;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package handson2.realm.io.twitter;
+package io.realm.handson2.twitter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
