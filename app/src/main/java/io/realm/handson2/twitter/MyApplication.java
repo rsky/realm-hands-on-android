@@ -19,7 +19,7 @@ public class MyApplication extends Application {
                 "<consumerSecret>");
 
         Realm.setDefaultConfiguration(new RealmConfiguration.Builder(this)
-                .deleteRealmIfMigrationNeeded()
+                //.deleteRealmIfMigrationNeeded()
                 .build());
     }
 }
