@@ -18,6 +18,8 @@ public class MyApplication extends Application {
                 "<consumerKey>",
                 "<consumerSecret>");
 
-        Realm.setDefaultConfiguration(new RealmConfiguration.Builder(this).build());
+        Realm.setDefaultConfiguration(new RealmConfiguration.Builder(this)
+                .deleteRealmIfMigrationNeeded()
+                .build());
     }
 }

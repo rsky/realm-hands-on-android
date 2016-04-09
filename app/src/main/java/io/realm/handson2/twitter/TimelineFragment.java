@@ -1,7 +1,7 @@
 package io.realm.handson2.twitter;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +11,11 @@ import android.widget.TextView;
 import io.realm.Realm;
 import io.realm.RealmBaseAdapter;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class TimelineFragment extends ListFragment {
 
     private Realm realm;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -27,7 +23,7 @@ public class TimelineFragment extends ListFragment {
 
         realm = Realm.getDefaultInstance();
 
-        final RealmResults<Tweet> tweets = realm.allObjects(Tweet.class);
+        final RealmResults<Tweet> tweets = buildTweetList(realm);
         final RealmBaseAdapter<Tweet> adapter = new RealmBaseAdapter<Tweet>(getContext(), tweets, true) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
@@ -58,6 +54,11 @@ public class TimelineFragment extends ListFragment {
         ((RealmBaseAdapter<?>) getListAdapter()).updateRealmResults(null);
         realm.close();
         realm = null;
+    }
+
+    @NonNull
+    protected RealmResults<Tweet> buildTweetList(Realm realm) {
+        return realm.allObjectsSorted(Tweet.class, "createdAt", Sort.DESCENDING);
     }
 
     private class ViewHolder {
