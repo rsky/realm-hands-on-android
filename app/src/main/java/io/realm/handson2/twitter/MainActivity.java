@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public int getCount() {
-            return 1;
+        public int getCount(){
+            return 2;
         }
 
         @Override
@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     return "タイムライン";
+                case 1:
+                    return "ふぁぼ";
                 default:
                     throw new RuntimeException("unexpected position: " + position);
             }
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     return new TimelineFragment();
+                case 1:
+                    return new FavoritedFragment();
                 default:
                     throw new RuntimeException("unexpected position: " + position);
             }
