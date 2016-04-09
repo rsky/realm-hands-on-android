@@ -35,9 +35,4 @@ public class Tweet extends RealmObject {
         setCreatedAt(status.getCreatedAt());
         setFavorited(status.isFavorited());
     }
-
-    @Nullable
-    public Uri getIconUri() {
-        return iconUrl == null ? null : Uri.parse(iconUrl);
-    }
 }

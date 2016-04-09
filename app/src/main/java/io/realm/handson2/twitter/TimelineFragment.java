@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import io.realm.Realm;
 import io.realm.RealmBaseAdapter;
 import io.realm.RealmResults;
@@ -49,7 +51,12 @@ public class TimelineFragment extends ListFragment {
                     convertView.setTag(R.id.viewholder_tweet, viewHolder);
                 }
 
-                viewHolder.setTweet(tweet);
+                viewHolder.screenName.setText(tweet.getScreenName());
+                viewHolder.text.setText(tweet.getText());
+                Picasso.with(context)
+                        .load(tweet.getIconUrl())
+                        .into(viewHolder.image);
+
                 listView.setItemChecked(position, tweet.isFavorited());
 
                 return convertView;
@@ -73,19 +80,14 @@ public class TimelineFragment extends ListFragment {
     }
 
     private class ViewHolder {
-        private ImageView image;
-        private TextView screenName;
-        private TextView text;
+        ImageView image;
+        TextView screenName;
+        TextView text;
 
         ViewHolder(View view) {
             image = (ImageView) view.findViewById(R.id.image);
             screenName = (TextView) view.findViewById(R.id.screen_name);
             text = (TextView) view.findViewById(R.id.text);
-        }
-
-        void setTweet(Tweet tweet) {
-            screenName.setText(tweet.getScreenName());
-            text.setText(tweet.getText());
         }
     }
 }
