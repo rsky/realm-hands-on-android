@@ -8,14 +8,14 @@ import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
 public final class TwitterAuthUtil {
-    private static Application app;
-
     private static final String PREF_NAME = "auth";
     private static final String KEY_REQUEST_TOKEN = "requestToken";
     private static final String KEY_REQUEST_TOKEN_SECRET = "requestTokenSecret";
     private static final String KEY_ACCESS_TOKEN = "accessToken";
     private static final String KEY_ACCESS_TOKEN_SECRET = "accessTokenSecret";
     private static final String KEY_ACCESS_USER = "accessUser";
+
+    private static Application app;
 
     public static void init(Application app) {
         TwitterAuthUtil.app = app;

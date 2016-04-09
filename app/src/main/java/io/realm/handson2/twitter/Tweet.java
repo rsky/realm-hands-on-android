@@ -1,8 +1,5 @@
 package io.realm.handson2.twitter;
 
-import android.net.Uri;
-import android.support.annotation.Nullable;
-
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -22,7 +19,7 @@ public class Tweet extends RealmObject {
     private String screenName;
     private String text;
     private String iconUrl;
-    boolean favorited;
+    private boolean favorited;
 
     public Tweet() {
     }
