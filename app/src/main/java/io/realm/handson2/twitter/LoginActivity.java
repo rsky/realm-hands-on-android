@@ -35,12 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final View button = findViewById(R.id.login);
         //noinspection ConstantConditions
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                executeLogin();
-            }
-        });
+        button.setOnClickListener(v -> executeLogin());
     }
 
     private void executeLogin() {

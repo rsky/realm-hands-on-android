@@ -36,13 +36,10 @@ public class UpdateService extends IntentService {
 
         final Realm realm = Realm.getDefaultInstance();
         try {
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
-                    for (Status status : homeTimeline) {
-                        final Tweet tweet = new Tweet(status);
-                        realm.copyToRealm(tweet);
-                    }
+            realm.executeTransaction(rlm -> {
+                for (Status status : homeTimeline) {
+                    final Tweet tweet = new Tweet(status);
+                    rlm.copyToRealm(tweet);
                 }
             });
         } finally {

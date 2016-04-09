@@ -14,7 +14,7 @@ public class TimelineFragment extends ListFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ListAdapter adapter = new ArrayAdapter<String>(getContext(),
+        final ListAdapter adapter = new ArrayAdapter<>(getContext(),
                 R.layout.listitem_tweet,
                 R.id.text,
                 Arrays.asList("Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
