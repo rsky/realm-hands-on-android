@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +28,24 @@ public class MainActivity extends AppCompatActivity {
         startService(new Intent(this, UpdateService.class));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.refresh:
+                startService(new Intent(this, UpdateService.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private static final class MainPagerAdapter extends FragmentStatePagerAdapter {
 
         public MainPagerAdapter(FragmentManager fm) {
@@ -33,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public int getCount(){
+        public int getCount() {
             return 2;
         }
 
