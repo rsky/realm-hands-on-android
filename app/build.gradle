@@ -19,6 +19,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        handson {
+            buildConfigField 'String', 'TWITTER_CONSUMER_KEY', '""'
+            buildConfigField 'String', 'TWITTER_CONSUMER_SECRET', '""'
+        }
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

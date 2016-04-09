@@ -16,8 +16,8 @@ public class MyApplication extends Application {
         TwitterAuthUtil.init(this);
 
         TwitterFactory.getSingleton().setOAuthConsumer(
-                "<consumerKey>",
-                "<consumerSecret>");
+                BuildConfig.TWITTER_CONSUMER_KEY,
+                BuildConfig.TWITTER_CONSUMER_SECRET);
 
         Realm.setDefaultConfiguration(buildMigration());
     }
